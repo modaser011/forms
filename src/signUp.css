@@ -1,0 +1,86 @@
+body {
+    background-image: url("ph2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+
+.cont {
+    width: 800px;
+    background-color: rgba(255, 255, 255);
+}
+
+.frm {
+    border-radius: 10px;
+    box-shadow: 5px;
+    width: 700px;
+    color: rgb(0, 0, 0);
+    background-size: contain;
+}
+
+.text-muted {
+    color: white;
+    font-weight: bold;
+}
+
+.mb-3 {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.shadow-sm {
+    font-weight: bolder;
+}
+
+.password {
+    display: flex;
+    flex-direction: column;
+}
+
+.valid {
+    color: green;
+}
+
+.invalid {
+    color: red;
+}
+
+.label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 1px solid #000;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.username,
+.email,
+.number,
+.Password,
+.gender {
+    height: 60px;
+}
+
+.c {
+    height: 60px;
+    width: 150px;
+}
+
+.shadow-sm {
+    color: rgb(0, 0, 0);
+}
+
+.x {
+    color: rgb(0, 0, 0);
+}

@@ -1,0 +1,46 @@
+body {
+    background-image: url("ph2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fram {
+    border-radius: 10px;
+    background-color: rgba(10, 10, 10, 0.9);
+    box-shadow: 5px;
+    color: aliceblue;
+}
+
+.mb-2 {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.Password,
+.email {
+    height: 60px;
+}
+
+.c {
+    height: 60px;
+    width: 150px;
+}
+
+.shadow-sm {
+    color: rgb(0, 0, 0);
+}
+
+.cont {
+    width: 600px;
+    background-color: rgba(255, 255, 255);
+    margin-top: 150px;
+}
+
+.frm {
+    border-radius: 10px;
+    box-shadow: 5px;
+    width: 500px;
+    color: rgb(0, 0, 0);
+    background-size: contain;
+}
