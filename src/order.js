@@ -26,15 +26,24 @@ export function Order()
   </thead>
   <tbody>
     <tr>
-    <td>1</td>
-      <td>Moda</td>
-      <td >250$</td>
-      <td>01117386101</td>
-      <td>Qnater</td>
+    <td rowSpan={3}>1</td>
+      <td rowSpan={3}>Moda</td>
+      <td rowSpan={3}>250$</td>
+      <td rowSpan={3}>01117386101</td>
+      <td rowSpan={3}>Qnater</td>
       <td>burger</td>
       <td>50$</td>
       <td>5</td> 
-
+    </tr>
+    <tr>
+      <td>pitza</td>
+      <td>60$</td>
+      <td>1</td> 
+    </tr>
+    <tr>
+      <td>chicken</td>
+      <td>50$</td>
+      <td>2</td> 
     </tr>
   </tbody>
 </Table>
