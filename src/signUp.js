@@ -16,6 +16,23 @@ export function SignUp()
   const[error,seterror]=useState("");
   const[vari,setVari]=useState(false);
   const[pow,setPow]=useState("");
+  const[username,setusername]=useState(""); 
+  const[error1,seterror1]=useState("");
+
+
+  const user = (e) => {
+    
+    const username1 = e.target.value;
+setusername(username1);
+    if(username1.length<5||username1.length>15)
+{
+  seterror1("username must be 5 to 15 Character");
+}
+else 
+{
+  seterror1("");
+}
+  }
 
 const onChange1=(value)=> {
     console.log("Captcha value:", value);
@@ -71,18 +88,18 @@ else
   };
 
   return (
-      <>
-      <Container className="cont">
-         <h1 className="shadow-sm   p-3 text-center">Sign Up</h1>
+      <Container className="cont ">
+         <h1 className="shadow-sm p-3 text-center">Sign Up</h1>
                 <Row className="mt-2">
            <Col  lg={5} md={6} sm={12}  className='frm p-5 m-auto shadow-sm rounded-lg'>
            <Form className="mb" >
             <Form.Group className="mb-3" controlId="formBasicText">
     <Form.Label >username</Form.Label>
-    <Form.Control type="text" className="username" placeholder="username" required />
+    <Form.Control type="text" value={username} pattern="[a-zA-Z'-'\s]*" className="username" placeholder="username" onChange={(e)=>user(e)} required />
   </Form.Group>
   <br/>
-
+  <p>{error1}</p>
+<br/>
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
     <Form.Control type="email" placeholder="Enter email" className="email" required/>
@@ -154,6 +171,5 @@ onChange={onChange1}
            </Col>
          </Row>
       </Container>
-      </>
     );
 }
