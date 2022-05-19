@@ -33,7 +33,7 @@ body {
     font-weight: bolder;
 }
 
-.password {
+.password,.username {
     display: flex;
     flex-direction: column;
 }

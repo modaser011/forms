@@ -12,7 +12,7 @@ function App() {
 
     return (
        <div className="cklj">
-           <LoginPage/>
+           <SignUp/>
        </div>
     );
 }

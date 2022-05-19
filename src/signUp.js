@@ -1,5 +1,4 @@
 import React from "react";
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './signUp.css';
 import './App.css';
@@ -7,52 +6,70 @@ import { Container,Form,Button,Col,Row} from "react-bootstrap";
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import PRequisite from "./PRequisite";
-import Card from 'react-bootstrap/Card'
+import PRequisiteuser from "./PRequisiteuser";
 
 export function SignUp()
-{
+{  const[username,setusername]=useState(""); 
+ const[error1,seterror1]=useState("");
+const[phone,setphone]=useState("");
+
   const[Password,setPassword]=useState("");
   const[confirmPassword,setConfirmPassword]=useState("");
   const[error,seterror]=useState("");
   const[vari,setVari]=useState(false);
   const[pow,setPow]=useState("");
-  const[username,setusername]=useState(""); 
-  const[error1,seterror1]=useState("");
-
-
-  const user = (e) => {
-    
-    const username1 = e.target.value;
-setusername(username1);
-    if(username1.length<5||username1.length>15)
-{
-  seterror1("username must be 5 to 15 Character");
-}
-else 
-{
-  seterror1("");
-}
-  }
+  const[error2,seterror2]=useState("");
+  const[error3,seterror3]=useState("");
 
 const onChange1=(value)=> {
     console.log("Captcha value:", value);
 setVari(true);
   };
   
-  const confirm = (e) => {
-    const confpass=e.target.value;
-    setConfirmPassword(confpass);
-    if(Password!= confpass)
+  const [pRequisite2, setPRequisite2] = useState(false);
+  const [check2, setCheck2] = useState({
+    letter: false,
+    range2: false,
+  });
+
+  const handleOnChang = (e) => {
+    setusername(e.target.value);
+  };
+
+  const handleOnFocu = () => {
+    setPRequisite2(true);
+  };
+
+  const handleOnBlu = () => {
+    setPRequisite2(false);
+  };
+
+  const handleOnKeyUp2 = (e) => {
+    const { value } = e.target; 
+     const range2 = (value.length >= 5 &&value.length <= 15);
+    const letter = /^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/.test(value);
+    setCheck2({
+      letter,
+      range2,
+    });
+  };
+
+
+
+const phonee = (e) => {
+    
+  const phone1 = e.target.value;
+setphone(phone1);
+  if(phone1.length!=11)
 {
-seterror("confirm password isn't match password");
+seterror2("phone number must 11 numbers");
 }
 else 
 {
-  seterror("");
-
+seterror2("");
 }
- };
-
+  }
+  
  const [pRequisite, setPRequisite] = useState(false);
   const [checks, setChecks] = useState({
     capsLetterCheck: false,
@@ -87,54 +104,102 @@ else
     });
   };
 
+
+
+  const confirm = (e) => {
+    const confpass=e.target.value;
+    setConfirmPassword(confpass);
+    if(Password!= confpass)
+{
+seterror("confirm password isn't match password");
+}
+else 
+{
+  seterror("");
+}
+ };
+
+
+
   return (
-      <Container className="cont ">
+      <>
+         <Container className="cont">
          <h1 className="shadow-sm p-3 text-center">Sign Up</h1>
                 <Row className="mt-2">
-           <Col  lg={5} md={6} sm={12}  className='frm p-5 m-auto shadow-sm rounded-lg'>
+           <Col  lg={5} md={6} sm={12}  
+           className='frm p-5 m-auto shadow-sm rounded-lg'>
            <Form className="mb" >
             <Form.Group className="mb-3" controlId="formBasicText">
     <Form.Label >username</Form.Label>
-    <Form.Control type="text" value={username} pattern="[a-zA-Z'-'\s]*" className="username" placeholder="username" onChange={(e)=>user(e)} required />
+    <Form.Control type="text" value={username} 
+     className="username"
+      placeholder="username" 
+     onChange={handleOnChang}
+            onFocus={handleOnFocu}
+            onBlur={handleOnBlu}
+            onKeyUp={handleOnKeyUp2}  
+            required />
   </Form.Group>
-  <br/>
-  <p>{error1}</p>
-<br/>
+  <div> {pRequisite2 ? (
+          <PRequisiteuser
+            letter={check2.letter ? "valid" : "invalid"}
+            range2={check2.range2 ? "valid" : "invalid"}
+          />
+        ) : null}</div><br/>
+
+
+
+
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" className="email" required/>
+    <Form.Control 
+    type="email"
+     placeholder="Enter email" 
+     className="email"
+      required/>
     <Form.Text className="text-muted">
       We'll never share your email with anyone else.
     </Form.Text>  
   </Form.Group>
 
   <br/>
+
+
+
+
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>Phone number</Form.Label>
-    <Form.Control type="tel" placeholder="Enter your Phone number" className="number" min="11" max="11" pattern="[0-9]{11}" required/>
+    <Form.Control 
+    type="tel"
+     placeholder="Enter your Phone number"
+      className="number" 
+      min="11" max="11"
+       pattern="[0-9]{11}"
+        required/>
   </Form.Group>
   <br/>
-  <Form.Group className="mb-3" >
-    <Form.Label>Gender</Form.Label>
-    <Form.Select className="gender">
-      <option>male</option>
-      <option>female</option>
-    </Form.Select>
-  </Form.Group>
-  <br/>
+  <p className="x">phone number must be 11 numbers </p>
+<br/>
+
+
+
+
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
     <Form.Label>Password</Form.Label>
     <Form.Control type="password" 
     value={Password}
+     required
     onChange={handleOnChange}
             onFocus={handleOnFocus}
             onBlur={handleOnBlur}
             onKeyUp={handleOnKeyUp}
      className="Password"
-      placeholder="Password" 
-       required />
+      placeholder="Password" />
   </Form.Group>
+
+
+
  <div> {pRequisite ? (
           <PRequisite
             capsLetterFlag={checks.capsLetterCheck ? "valid" : "invalid"}
@@ -144,6 +209,10 @@ else
           />
         ) : null}</div>
   <br/>
+
+
+
+
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
     <Form.Label>Confirm Password</Form.Label>
@@ -157,6 +226,9 @@ else
  <br/>
  <p>{error}</p>
    <br/>
+
+
+
   <ReCAPTCHA
 sitekey="6LfbxJUfAAAAABnMrIAkuAbw1tYCEfRpRe1nkIlS"
 onChange={onChange1}
@@ -164,12 +236,20 @@ onChange={onChange1}
 <br/>
 <p className="x">hint: Fill all fields and captcha to signUp</p>
 
-  <Button variant="primary btn-block" className="c"  type="submit" disabled={!vari} >
+  <Button 
+  variant="primary btn-block" 
+  className="c" 
+   type="submit" 
+   disabled={!vari} >
     SignUp
   </Button>
+
+
+
 </Form>
            </Col>
          </Row>
       </Container>
+      </>
     );
 }

@@ -7,7 +7,7 @@ import { Container,Form,Button,Col,Row} from "react-bootstrap";
 const LoginPage = () => {
     return (
         <>
-            <Container className="cont">
+            <Container className="contt">
                 <h1 className="shadow-sm mt-5 p-3 text-center rounded">Login</h1>
                 <Row className="mt-5">
                     <Col lg={5} md={6} sm={12} className=" frm p-5 m-auto shadow-sm rounded-lg">
