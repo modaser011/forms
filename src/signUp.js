@@ -175,6 +175,7 @@ else
       className="number" 
       min="11" max="11"
        pattern="[0-9]{11}"
+       value="(___) ___-____" data-mask="(___) ___-____"
         required/>
   </Form.Group>
   <br/>
