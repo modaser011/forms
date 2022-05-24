@@ -1,4 +1,5 @@
 import React from "react";
+import InputMask from "react-input-mask";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './signUp.css';
 import './App.css';
@@ -11,15 +12,14 @@ import PRequisiteuser from "./PRequisiteuser";
 export function SignUp()
 {  const[username,setusername]=useState(""); 
  const[error1,seterror1]=useState("");
-const[phone,setphone]=useState("");
-
+const [value, setValue] = useState()
   const[Password,setPassword]=useState("");
   const[confirmPassword,setConfirmPassword]=useState("");
   const[error,seterror]=useState("");
   const[vari,setVari]=useState(false);
   const[pow,setPow]=useState("");
   const[error2,seterror2]=useState("");
-  const[error3,seterror3]=useState("");
+  const [phone, setPhone] = React.useState("");
 
 const onChange1=(value)=> {
     console.log("Captcha value:", value);
@@ -94,7 +94,7 @@ seterror2("");
     const { value } = e.target;
     const capsLetterCheck = /[A-Z]/.test(value);
     const numberCheck = /[0-9]/.test(value);
-    const pwdLengthCheck = value.length >= 8;
+    const pwdLengthCheck = value.length >= 8 && value.length <= 15;
     const specialCharCheck = /[!@#$%^&*]/.test(value);
     setChecks({
       capsLetterCheck,
@@ -166,25 +166,18 @@ else
 
 
 
-
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Phone number</Form.Label>
-    <Form.Control 
-    type="tel"
-     placeholder="Enter your Phone number"
-      className="number" 
-      min="11" max="11"
-       pattern="[0-9]{11}"
-       value="(___) ___-____" data-mask="(___) ___-____"
-        required/>
-  </Form.Group>
-  <br/>
-  <p className="x">phone number must be 11 numbers </p>
-<br/>
-
-
-
-
+    <Form.Label className="mb-3">Phone Number</Form.Label>
+    <br/>
+  <InputMask
+        className="number" 
+        value={phone}
+        onChange={e => setPhone(e.target.value)}
+        mask="+1\(999) 999-9999"
+        maskChar=" "
+        required
+      />
+    <br/>
+    <br/>
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
     <Form.Label>Password</Form.Label>
@@ -210,7 +203,6 @@ else
           />
         ) : null}</div>
   <br/>
-
 
 
 
