@@ -156,6 +156,7 @@ else
     type="email"
      placeholder="Enter email" 
      className="email"
+     pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
       required/>
     <Form.Text className="text-muted">
       We'll never share your email with anyone else.
@@ -172,7 +173,7 @@ else
         className="number" 
         value={phone}
         onChange={e => setPhone(e.target.value)}
-        mask="+1\(999) 999-9999"
+        mask="+20\(999) 999-9999"
         maskChar=" "
         required
       />
